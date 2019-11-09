@@ -1,3 +1,6 @@
 #ignore
-.gradle/
-.idea/
+
+
+/.gradle/
+/.idea/
+.idea/workspace.xml
