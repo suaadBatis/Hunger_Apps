@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 public class NavigateToMoreScreen {
 
-
+//
     public  static AppiumDriverLocalService service;
     private AndroidDriver driver;
 
