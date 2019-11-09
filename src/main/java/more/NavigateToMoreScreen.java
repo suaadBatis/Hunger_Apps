@@ -17,7 +17,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.Utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,6 @@ public class NavigateToMoreScreen {
 
     @Before
     public void setUp () throws MalformedURLException {
-
        service = AppiumDriverLocalService.buildService (
                 new AppiumServiceBuilder ().usingDriverExecutable(new File ("/usr/local/bin/node"))
                         .withAppiumJS(new File("/Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js"))
