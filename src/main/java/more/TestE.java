@@ -20,15 +20,15 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 
-public class LoggeInUserToMoreScreen {
+public class TestE {
 
-    private static final String Suaad_ScreenShot=("/Users/suaadbatis/Desktop/Suaad/");
+    private static final String Suaad_ScreenShot=  "/Users/suaadbatis/Desktop/Suaad/";
     public  static AppiumDriverLocalService service;
     private static AndroidDriver driver;
 
     @Before
-    public void setUp () throws MalformedURLException {
-       service = AppiumDriverLocalService.buildService (
+    public void setUp () throws MalformedURLException, IOException  {
+        service = AppiumDriverLocalService.buildService (
                 new AppiumServiceBuilder ().usingDriverExecutable(new File ("/usr/local/bin/node"))
                         .withAppiumJS(new File("/Applications/Appium.app/Contents/Resources/app/node_modules/appium/build/lib/main.js"))
                         .withArgument(GeneralServerFlag.LOCAL_TIMEZONE)
@@ -37,6 +37,7 @@ public class LoggeInUserToMoreScreen {
 
         File app = new File(System.getProperty ("user.dir") + "/App/app-debug.apk");
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities ();
+
         desiredCapabilities.setCapability ("platformName", "android");
         desiredCapabilities.setCapability ("deviceName", "emulator-5556");
         desiredCapabilities.setCapability ("app", app.getAbsolutePath ());
@@ -44,37 +45,27 @@ public class LoggeInUserToMoreScreen {
         URL remoteUrl = new URL ("http://localhost:4723/wd/hub");
         driver = new AndroidDriver (remoteUrl, desiredCapabilities);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        Utils.sleep (15);
+        Utils.sleep (10);
+        screenshot(Suaad_ScreenShot+"Case2");
         if (driver.findElementById("com.android.packageinstaller:id/permission_allow_button").isDisplayed()) {
             driver.findElementById ("com.android.packageinstaller:id/permission_allow_button").click ();
         }
-    }
 
+    }
     public static void screenshot(String path_screenshot) throws IOException {
         File srcFile = driver.getScreenshotAs (OutputType.FILE);
         File targetFile = new File(path_screenshot+".jpg");
         FileUtils.copyFile(srcFile, targetFile);
     }
 
+    // start testing
     @Test
-    public void MorePageWithLoggedInUser () {
-            Utils.sleep (1);
-            driver.findElementById ("com.hungerstation.android.web.debug:id/smallLabel").click ();
-            driver.findElementById ("com.hungerstation.android.web.debug:id/orders_item").click ();
-            driver.findElementById ("com.hungerstation.android.web.debug:id/btnaction").click ();
-            driver.findElementById ("com.hungerstation.android.web.debug:id/phone_number").sendKeys ("0500341221");
-            Utils.sleep (2);
-            driver.findElementById ("com.hungerstation.android.web.debug:id/btn_login").click ();
-            driver.findElementById ("com.hungerstation.android.web.debug:id/edt_verification_number").sendKeys ("000000"); Utils.sleep (2);
-            driver.findElementById ("com.hungerstation.android.web.debug:id/more_item").click ();
-        }
+    public  void ReturnBack () throws IOException {
+        Utils.sleep (10);
+        screenshot(Suaad_ScreenShot+"Case2");
+        Utils.sleep (10);
+    }
 
-        @Test
-        public void ReturnBack () {
-            Utils.sleep (1);
-            driver.findElementById ("com.hungerstation.android.web.debug:id/more_item").click ();Utils.sleep (3);
-            driver.findElementByClassName ("androidx.drawerlayout.widget.DrawerLayout").click ();Utils.sleep (3);
-        }
     @After
     public void tearDown() {
 
