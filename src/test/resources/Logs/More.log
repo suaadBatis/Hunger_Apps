@@ -1,5 +1,5 @@
-2019-12-07 19:48:21:160 [Appium] Welcome to Appium v1.15.1
-2019-12-07 19:48:21:161 [Appium] Non-default server args:
-2019-12-07 19:48:21:162 [Appium]   logFile: /Users/suaadbatis/Documents/GitHub/Hunger_Apps/src/test/resources/Logs/More.log
-2019-12-07 19:48:21:162 [Appium]   localTimezone: true
-2019-12-07 19:48:21:186 [HTTP] Could not start REST http interface listener. The requested port may already be in use. Please make sure there is no other instance of this server running already.
+2019-12-07 20:06:51:530 [Appium] Welcome to Appium v1.15.1
+2019-12-07 20:06:51:531 [Appium] Non-default server args:
+2019-12-07 20:06:51:532 [Appium]   logFile: /Users/suaadbatis/Documents/GitHub/Hunger_Apps/src/test/resources/Logs/More.log
+2019-12-07 20:06:51:532 [Appium]   localTimezone: true
+2019-12-07 20:06:51:556 [HTTP] Could not start REST http interface listener. The requested port may already be in use. Please make sure there is no other instance of this server running already.
