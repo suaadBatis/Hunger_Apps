@@ -19,12 +19,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import static Services.ScreenShot.takeScreenShot;
+import static Services.PrintFile.PrintFiles;
 
 public class LoggeInUserToMoreScreen {
     public  static AppiumDriverLocalService service;
     //private static AndroidDriver driver;
     protected AppiumDriver driver;
+    private static final String Suaad_ScreenShot=("./ScreenShots/");
+
     @Before
     public void setUp () throws MalformedURLException {
        service = AppiumDriverLocalService.buildService (
@@ -37,7 +39,7 @@ public class LoggeInUserToMoreScreen {
         File app = new File(System.getProperty("user.dir") + "/App/app-debug.apk");
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities ();
         desiredCapabilities.setCapability ("platformName", "android");
-        desiredCapabilities.setCapability ("deviceName", "emulator-5556");
+        desiredCapabilities.setCapability ("deviceName", "emulator-5554");
         desiredCapabilities.setCapability ("app", app.getAbsolutePath ());
         desiredCapabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, "true");
         URL remoteUrl = new URL ("http://localhost:4723/wd/hub");
@@ -51,8 +53,11 @@ public class LoggeInUserToMoreScreen {
 
     @Test
     public void MorePageWithLoggedInUser () throws IOException  {
+            String des = " This fetcher need more detiles  ";
             Utils.sleep (1);
-            takeScreenShot();
+            Services.ScreenShot.screenshots(Suaad_ScreenShot+ "finally", driver);
+            Services.ScreenShot.takeScreenShot(driver);
+            PrintFiles("MorePageWithLoggedInUser.txt", des);
             driver.findElementById ("com.hungerstation.android.web.debug:id/smallLabel").click ();
             driver.findElementById ("com.hungerstation.android.web.debug:id/orders_item").click ();
             driver.findElementById ("com.hungerstation.android.web.debug:id/btnaction").click ();
@@ -68,6 +73,7 @@ public class LoggeInUserToMoreScreen {
             Utils.sleep (1);
             driver.findElementById ("com.hungerstation.android.web.debug:id/more_item").click ();Utils.sleep (3);
             driver.findElementByClassName ("androidx.drawerlayout.widget.DrawerLayout").click ();Utils.sleep (3);
+
         }
     @After
     public void tearDown() {
