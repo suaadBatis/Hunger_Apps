@@ -4,5 +4,5 @@
 /.gradle/
 /.idea/
 .idea/workspace.xml
-/.ScreenShots/
-/.Logs/
+/ScreenShots/
+/Logs/
