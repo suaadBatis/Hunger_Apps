@@ -1,6 +1,5 @@
 package more;
 
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -12,14 +11,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.Utils;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-
+// classes used
 import static Services.PrintFile.PrintFiles;
+import static Services.ScreenShot.screenshots;
+import static Services.ScreenShot.takeScreenShot;
+
 
 public class LoggeInUserToMoreScreen {
     public  static AppiumDriverLocalService service;
@@ -53,10 +54,10 @@ public class LoggeInUserToMoreScreen {
 
     @Test
     public void MorePageWithLoggedInUser () throws IOException  {
-            String des = " This fetcher need more detiles  ";
+            String des = " Share your details here ex. Pass@word ";
             Utils.sleep (1);
-            Services.ScreenShot.screenshots(Suaad_ScreenShot+ "finally", driver);
-            Services.ScreenShot.takeScreenShot(driver);
+            screenshots(Suaad_ScreenShot+ "finally", driver);
+            takeScreenShot(driver);
             PrintFiles("MorePageWithLoggedInUser.txt", des);
             driver.findElementById ("com.hungerstation.android.web.debug:id/smallLabel").click ();
             driver.findElementById ("com.hungerstation.android.web.debug:id/orders_item").click ();
