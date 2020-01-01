@@ -1,6 +1,9 @@
 package Services;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,6 +28,16 @@ public class Tools {
         for(Object obj : data) {
             p.println ( obj );
             p.close ();
+        }
+    }
+    public static void printScreen(String ImageName){
+        try {
+            Robot r = new Robot();
+            Rectangle rec = new Rectangle( Toolkit.getDefaultToolkit ().getScreenSize ());// full screen
+            BufferedImage img = r.createScreenCapture(rec);
+            ImageIO.write ( img, "jpg", new File ( ImageName + ".jpg" ) );
+        } catch (AWTException | IOException e) {
+            e.printStackTrace ();
         }
     }
 }

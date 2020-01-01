@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.Utils;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,7 +19,7 @@ import static Services.PrintFile.PrintFiles2;
 
 public class test {
     //private static AndroidDriver driver;
-    protected AppiumDriver driver;
+    public  AppiumDriver driver;
     private static final String Suaad_ScreenShot=("./ScreenShots/");
 
     @Before
@@ -45,7 +46,7 @@ public class test {
 
 
     @Test
-    public void ReturnBack () {
+    public  void ReturnBack () {
         Utils.sleep (1);
         driver.findElementById ("com.hungerstation.android.web.debug:id/more_item").click ();Utils.sleep (3);
         driver.findElementByClassName ("androidx.drawerlayout.widget.DrawerLayout").click ();Utils.sleep (3);
@@ -53,11 +54,13 @@ public class test {
         Utils.sleep (1);
         String path = "./PrintFilesFolder/suaad.txt";
         PrintFiles2(path, des);
+        //printScreen("soso");
 
-    }
+
+        }
     @After
     public void tearDown() {
-        driver.quit();
+        //driver.quit();
         //StopServer ();
     }
 
