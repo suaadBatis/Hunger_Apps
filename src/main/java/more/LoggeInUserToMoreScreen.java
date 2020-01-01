@@ -16,8 +16,9 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
-// classes used
+// classes imported
 import static Services.PrintFile.PrintFiles;
+import static Services.PrintFile.PrintFiles2;
 import static Services.ScreenShot.screenshots;
 import static Services.ScreenShot.takeScreenShot;
 
@@ -54,10 +55,12 @@ public class LoggeInUserToMoreScreen {
 
     @Test
     public void MorePageWithLoggedInUser () throws IOException  {
-            String des = " Share your details here ex. Pass@word ";
             Utils.sleep (1);
             screenshots(Suaad_ScreenShot+ "finally", driver);
             takeScreenShot(driver);
+            String des = " Share your details here ex. Pass@word ";
+            String path = "./PrintFilesFolder/suaad.txt";
+            PrintFiles2(path, des);
             PrintFiles("MorePageWithLoggedInUser.txt", des);
             driver.findElementById ("com.hungerstation.android.web.debug:id/smallLabel").click ();
             driver.findElementById ("com.hungerstation.android.web.debug:id/orders_item").click ();
