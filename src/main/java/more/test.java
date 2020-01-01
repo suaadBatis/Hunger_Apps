@@ -8,13 +8,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import utils.Utils;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-import static Services.ServerRunner.*;
+import static Services.PrintFile.PrintFiles2;
+
 
 public class test {
     //private static AndroidDriver driver;
@@ -25,7 +25,7 @@ public class test {
     public void setUp () throws MalformedURLException {
 
 
-        StartServer(); // check the logs folder
+        //StartServer(); // check the logs folder
 
         File app = new File(System.getProperty("user.dir") + "/App/app-debug.apk");
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities ();
@@ -49,12 +49,16 @@ public class test {
         Utils.sleep (1);
         driver.findElementById ("com.hungerstation.android.web.debug:id/more_item").click ();Utils.sleep (3);
         driver.findElementByClassName ("androidx.drawerlayout.widget.DrawerLayout").click ();Utils.sleep (3);
+        String des = " Share your details here ex. Pass@word ";
+        Utils.sleep (1);
+        String path = "./PrintFilesFolder/suaad.txt";
+        PrintFiles2(path, des);
 
     }
     @After
     public void tearDown() {
         driver.quit();
-        StopServer ();
+        //StopServer ();
     }
 
 
